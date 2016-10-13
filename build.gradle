@@ -2,6 +2,11 @@ apply plugin: 'java'
 apply plugin: 'application'
 mainClassName = 'Main'
 
+
+version = '1.44'
+
+
+/* this task combine only source code into jar file*/
 jar {
     baseName = 'module_14'
     version =  '1.4'
@@ -13,7 +18,18 @@ jar {
 task myTask << {
     println 'compiling classes for parent MODULE ................................................'
 }
-
+/* this task combine all dependencies into one jar file
+task fatJar(type: Jar) {
+	manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+        	'Implementation-Version': version,
+        	'Main-Class': 'Main'
+    }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+*/
 repositories {
     mavenLocal()
     mavenCentral()
