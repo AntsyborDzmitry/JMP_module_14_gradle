@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'application'
+mainClassName = 'Main'
+
+jar {
+    baseName = 'DB_module_14'
+    version =  '1.4'
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+}
+
+task myTask << {
+    println 'compiling classes for DB_module ...............................................'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}

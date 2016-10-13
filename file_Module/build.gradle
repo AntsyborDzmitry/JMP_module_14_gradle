@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'application'
+mainClassName = 'Main'
+
+jar {
+    baseName = 'file_module_14'
+    version =  '1.4'
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+}
+
+task myTask << {
+    println 'compiling classes for file_module .................................................'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+}
